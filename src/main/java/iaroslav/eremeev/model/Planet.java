@@ -3,7 +3,6 @@ package iaroslav.eremeev.model;
 import java.util.Objects;
 
 public class Planet {
-
     private String name;
     private String type;
 
@@ -15,8 +14,8 @@ public class Planet {
         this.type = type;
     }
 
-    public void behaviour(){
-        System.out.println("Planet " + name + " is here. Its type is " + type);
+    public String behaviour(){
+        return "Planet " + name + " is here. Its type is " + type + "\n";
     }
 
     public String getName() {

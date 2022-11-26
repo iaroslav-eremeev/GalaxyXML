@@ -8,46 +8,49 @@ public class Galaxy {
     private String name;
     private ArrayList<Planet> planets = new ArrayList<>();
 
-    public Galaxy(String name, ArrayList<Planet> planets) {
+    public Galaxy(String name) {
         this.name = name;
-        this.planets = planets;
     }
 
     public Galaxy() {
     }
 
-    public void behavior(){
+    public String behavior(){
         System.out.println("This is galaxy " + name + ". Check the list of its planets");
-        for (int i = 0; i < this.planets.size(); i++) {
-            this.planets.get(i).behaviour();
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Planet planet : this.planets) {
+            stringBuilder.append(planet.behaviour());
         }
+        return stringBuilder.toString();
     }
 
     public void addPlanet(Planet planet){
         this.planets.add(planet);
     }
 
-    public boolean findPlanet(Planet planet){
-        return this.planets.contains(planet);
+    public int findPlanet(Planet planet){
+        return this.planets.indexOf(planet);
     }
 
-    public boolean findPlanet(String planetName){
+    public Planet findPlanet(String planetName){
         for (Planet planet : this.planets) {
-            if (planet.getName().equals(planetName)) return true;
+            if (planet.getName().equals(planetName)) return planet;
         }
-        return false;
+        return null;
     }
 
-    public void removePlanet(Planet planet){
-        this.planets.remove(planet);
+    public boolean removePlanet(Planet planet){
+        return this.planets.remove(planet);
     }
 
-    public void removePlanet(String planetName){
+    public Planet removePlanet(String planetName){
         for (Planet planet : this.planets){
             if (planet.getName().equals(planetName)){
                 this.planets.remove(planet);
+                return planet;
             }
         }
+        return null;
     }
 
     public String getName() {
@@ -56,14 +59,6 @@ public class Galaxy {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public ArrayList<Planet> getPlanets() {
-        return planets;
-    }
-
-    public void setPlanets(ArrayList<Planet> planets) {
-        this.planets = planets;
     }
 
     @Override

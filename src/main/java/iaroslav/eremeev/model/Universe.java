@@ -1,9 +1,9 @@
 package iaroslav.eremeev.model;
 
+import iaroslav.eremeev.util.Generator;
+
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Random;
-import java.util.Scanner;
 
 public class Universe {
 
@@ -12,65 +12,49 @@ public class Universe {
     public Universe() {
     }
 
-    public Universe(ArrayList<Galaxy> galaxies) {
-        this.galaxies = galaxies;
-    }
-
-    public void addGalaxy(Galaxy galaxy){
+    public void addGalaxy(Galaxy galaxy) {
         this.galaxies.add(galaxy);
     }
 
-    public boolean findPlanet(Planet planet){
+    public int[] findPlanet(Planet planet) {
         for (Galaxy galaxy : this.galaxies) {
-            if (galaxy.findPlanet(planet)) return true;
+            if (galaxy.findPlanet(planet) > -1)
+                return new int[]{findGalaxy(galaxy), galaxy.findPlanet(planet)};
         }
-        return false;
+        return null;
     }
 
-    public boolean findPlanet(String planetName){
+    public Planet findPlanet(String planetName) {
         for (Galaxy galaxy : this.galaxies) {
-            if (galaxy.findPlanet(planetName)) return true;
+            return galaxy.findPlanet(planetName);
         }
-        return false;
+        return null;
     }
 
-    public boolean findGalaxy(Galaxy galaxy){
-        return this.galaxies.contains(galaxy);
+    public int findGalaxy(Galaxy galaxy) {
+        return this.galaxies.indexOf(galaxy);
     }
 
-    public boolean findGalaxy(String galaxyName){
+    public Galaxy findGalaxy(String galaxyName) {
         for (Galaxy galaxy : this.galaxies) {
-            if (galaxy.getName().equals(galaxyName)) return true;
+            if (galaxy.getName().equals(galaxyName)) return galaxy;
         }
-        return false;
+        return null;
     }
 
-    public void behavior(){
-        System.out.println("Generating galaxies and planets... type 1 to finish");
-        Random random = new Random();
-        Generator generator = new Generator();
-        Scanner scanner = new Scanner(System.in);
-        long lastCall = 0;
-        while (scanner.nextInt() != 1){
-            if(System.currentTimeMillis() - lastCall > 30000) {
-                lastCall = System.currentTimeMillis();
-                int numberOfGalaxies = random.nextInt(10) + 1;
-                for (int i = 0; i < numberOfGalaxies; i++) {
-                    generator.generateGalaxy();
-                }
-                System.out.println("The Universe expands! Look what it consists of now:");
-                System.out.println(this.galaxies.toString());
+    public void behavior() {
+        while (true) {
+            ArrayList<Galaxy> galaxies = Generator.generateGalaxies();
+            this.galaxies.addAll(galaxies);
+            System.out.println(this);
+            try {
+                Thread.sleep(30000L);
+            } catch (InterruptedException e) {
             }
         }
+
     }
 
-    public ArrayList<Galaxy> getGalaxies() {
-        return galaxies;
-    }
-
-    public void setGalaxies(ArrayList<Galaxy> galaxies) {
-        this.galaxies = galaxies;
-    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,4 +1,4 @@
-package iaroslav.eremeev;
+package iaroslav.eremeev.program;
 
 import iaroslav.eremeev.model.Universe;
 
