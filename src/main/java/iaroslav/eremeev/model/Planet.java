@@ -50,18 +50,22 @@ public class Planet {
         Document doc = docBuilder.newDocument();
         Element rootElement = doc.createElement("planet");
         doc.appendChild(rootElement);
-        Element name = doc.createElement("name");
-        rootElement.appendChild(name);
-        name.setTextContent(this.name);
-        Element type = doc.createElement("type");
-        rootElement.appendChild(type);
-        type.setTextContent(this.type);
+        toXMLElement(doc, rootElement);
         try (FileOutputStream output =
                      new FileOutputStream(fileName)) {
             XMLwriter.writeXML(doc, output);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void toXMLElement(Document doc, Element planet){
+        Element name = doc.createElement("name");
+        planet.appendChild(name);
+        name.setTextContent(this.name);
+        Element type = doc.createElement("type");
+        planet.appendChild(type);
+        type.setTextContent(this.type);
     }
 
     @Override
