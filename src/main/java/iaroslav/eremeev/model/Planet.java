@@ -1,5 +1,15 @@
 package iaroslav.eremeev.model;
 
+import iaroslav.eremeev.util.XMLwriter;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Objects;
 
 public class Planet {
@@ -32,6 +42,26 @@ public class Planet {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public void toXML(String fileName) throws ParserConfigurationException, TransformerException {
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+        Document doc = docBuilder.newDocument();
+        Element rootElement = doc.createElement("planet");
+        doc.appendChild(rootElement);
+        Element name = doc.createElement("name");
+        rootElement.appendChild(name);
+        name.setTextContent(this.name);
+        Element type = doc.createElement("type");
+        rootElement.appendChild(type);
+        type.setTextContent(this.type);
+        try (FileOutputStream output =
+                     new FileOutputStream(fileName)) {
+            XMLwriter.writeXML(doc, output);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
