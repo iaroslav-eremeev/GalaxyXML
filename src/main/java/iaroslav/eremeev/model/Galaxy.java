@@ -1,6 +1,6 @@
 package iaroslav.eremeev.model;
 
-import iaroslav.eremeev.util.XMLwriter;
+import iaroslav.eremeev.util.XMLmethods;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -72,27 +72,20 @@ public class Galaxy {
     }
 
     public void toXML(String fileName) throws ParserConfigurationException, TransformerException {
-        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-        Document doc = docBuilder.newDocument();
-        Element rootElement = doc.createElement("galaxy");
-        doc.appendChild(rootElement);
+        Document doc = XMLmethods.newDoc();
+        this.toXMLElement(doc);
+        XMLmethods.writeToFile(doc, fileName);
+    }
+
+    public void toXMLElement(Document doc){
+        Element galaxy = doc.createElement("galaxy");
+        doc.appendChild(galaxy);
         Element name = doc.createElement("name");
-        rootElement.appendChild(name);
+        galaxy.appendChild(name);
         name.setTextContent(this.name);
         Element planets = doc.createElement("planets");
-        rootElement.appendChild(planets);
-        for (Planet planet : this.planets) {
-            Element planetElement = doc.createElement("planet");
-            planets.appendChild(planetElement);
-            planet.toXMLElement(doc, planetElement);
-        }
-        try (FileOutputStream output =
-                     new FileOutputStream(fileName)) {
-            XMLwriter.writeXML(doc, output);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        galaxy.appendChild(planets);
+        for (Planet planet : this.planets) planet.toXMLElement(doc);
     }
     @Override
     public boolean equals(Object o) {
