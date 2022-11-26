@@ -71,9 +71,9 @@ public class Galaxy {
         this.name = name;
     }
 
-    public void toXML(String fileName) throws ParserConfigurationException, TransformerException {
+    public void toXML(String fileName) throws ParserConfigurationException {
         Document doc = XMLmethods.newDoc();
-        this.toXMLElement(doc);
+        toXMLElement(doc);
         XMLmethods.writeToFile(doc, fileName);
     }
 
@@ -85,7 +85,17 @@ public class Galaxy {
         name.setTextContent(this.name);
         Element planets = doc.createElement("planets");
         galaxy.appendChild(planets);
-        for (Planet planet : this.planets) planet.toXMLElement(doc);
+        for (Planet planet : this.planets) planet.toXMLElement(doc, planets);
+    }
+    public void toXMLElement(Document doc, Element parent){
+        Element galaxy = doc.createElement("galaxy");
+        parent.appendChild(galaxy);
+        Element name = doc.createElement("name");
+        galaxy.appendChild(name);
+        name.setTextContent(this.name);
+        Element planets = doc.createElement("planets");
+        galaxy.appendChild(planets);
+        for (Planet planet : this.planets) planet.toXMLElement(doc, planets);
     }
     @Override
     public boolean equals(Object o) {

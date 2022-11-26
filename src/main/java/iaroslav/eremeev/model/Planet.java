@@ -41,14 +41,25 @@ public class Planet {
     public void setType(String type) {
         this.type = type;
     }
-    public void toXML(String fileName) throws ParserConfigurationException, TransformerException {
+    public void toXML(String fileName) throws ParserConfigurationException {
         Document doc = XMLmethods.newDoc();
-        this.toXMLElement(doc);
+        toXMLElement(doc);
         XMLmethods.writeToFile(doc, fileName);
     }
     public void toXMLElement(Document doc){
         Element planet = doc.createElement("planet");
         doc.appendChild(planet);
+        Element name = doc.createElement("name");
+        planet.appendChild(name);
+        name.setTextContent(this.name);
+        Element type = doc.createElement("type");
+        planet.appendChild(type);
+        type.setTextContent(this.type);
+    }
+
+    public void toXMLElement(Document doc, Element parent){
+        Element planet = doc.createElement("planet");
+        parent.appendChild(planet);
         Element name = doc.createElement("name");
         planet.appendChild(name);
         name.setTextContent(this.name);

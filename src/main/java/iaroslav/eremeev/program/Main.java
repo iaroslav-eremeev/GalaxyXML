@@ -15,10 +15,21 @@ public class Main {
         Planet planet1 = new Planet("Tatuin", "desert");
         Planet planet2 = new Planet("Naboo", "forest");
         Planet planet3 = new Planet("Alderaan", "oceanic");
-        Galaxy galaxy = new Galaxy("Far");
-        galaxy.addPlanet(planet1);
-        galaxy.addPlanet(planet2);
-        galaxy.addPlanet(planet3);
-        galaxy.toXML("FarGalaxyXML");
+        Galaxy galaxy1 = new Galaxy("Far");
+        galaxy1.addPlanet(planet1);
+        galaxy1.addPlanet(planet2);
+        galaxy1.addPlanet(planet3);
+
+        Planet planet4 = new Planet("Uranus", "icy");
+        Planet planet5 = new Planet("Neptun", "oceanic");
+        Galaxy galaxy2 = new Galaxy("Milky Way");
+        galaxy2.addPlanet(planet4);
+        galaxy2.addPlanet(planet5);
+
+        Universe universe = new Universe();
+        universe.addGalaxy(galaxy1);
+        universe.addGalaxy(galaxy2);
+
+        universe.toXML("TheOnlyUniverse");
     }
 }

@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/iaroslav/eremeev/model/Galaxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/iaroslav/eremeev/model/Galaxy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/iaroslav/eremeev/model/Planet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/iaroslav/eremeev/model/Planet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/iaroslav/eremeev/model/Universe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/iaroslav/eremeev/model/Universe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/iaroslav/eremeev/program/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/iaroslav/eremeev/program/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
