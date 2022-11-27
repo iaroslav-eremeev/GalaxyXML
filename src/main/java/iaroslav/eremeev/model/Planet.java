@@ -43,8 +43,8 @@ public class Planet {
 
     public Planet fromXML(String fileName) throws ParserConfigurationException, IOException, SAXException {
         Document doc = XMLmethods.parseXML(fileName);
-        String name = doc.getElementsByTagName("name").item(0).getTextContent();
-        String type = doc.getElementsByTagName("type").item(0).getTextContent();
+        String name = doc.getDocumentElement().getAttribute("name");
+        String type = doc.getDocumentElement().getAttribute("type");
         return new Planet(name, type);
     }
 

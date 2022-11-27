@@ -3,12 +3,14 @@ package iaroslav.eremeev.program;
 import iaroslav.eremeev.model.Galaxy;
 import iaroslav.eremeev.model.Planet;
 import iaroslav.eremeev.model.Universe;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws ParserConfigurationException, TransformerException {
+    public static void main(String[] args) throws ParserConfigurationException, TransformerException, IOException, SAXException {
         /*Universe universe = new Universe();
         universe.behavior();*/
 
@@ -30,6 +32,9 @@ public class Main {
         universe.addGalaxy(galaxy1);
         universe.addGalaxy(galaxy2);
 
-        universe.toXML("TheOnlyUniverse");
+        /*universe.toXML("TheOnlyUniverse");*/
+
+        planet1.toXML("planet1");
+        System.out.println(planet1.fromXML("planet1"));
     }
 }
