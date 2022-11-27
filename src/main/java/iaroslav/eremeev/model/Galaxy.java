@@ -85,9 +85,7 @@ public class Galaxy {
     public void toXmlElement(Document doc){
         Element galaxy = doc.createElement("galaxy");
         doc.appendChild(galaxy);
-        Element name = doc.createElement("name");
-        galaxy.appendChild(name);
-        name.setTextContent(this.name);
+        galaxy.setAttribute("name", this.name);
         Element planets = doc.createElement("planets");
         galaxy.appendChild(planets);
         for (Planet planet : this.planets) planet.toXmlElement(doc, planets);
@@ -95,9 +93,7 @@ public class Galaxy {
     public void toXmlElement(Document doc, Element parent){
         Element galaxy = doc.createElement("galaxy");
         parent.appendChild(galaxy);
-        Element name = doc.createElement("name");
-        galaxy.appendChild(name);
-        name.setTextContent(this.name);
+        galaxy.setAttribute("name", this.name);
         Element planets = doc.createElement("planets");
         galaxy.appendChild(planets);
         for (Planet planet : this.planets) planet.toXmlElement(doc, planets);
