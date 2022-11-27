@@ -71,6 +71,8 @@ public class Galaxy {
     public Galaxy fromXML(String fileName) throws ParserConfigurationException, IOException, SAXException {
         Document doc = XMLmethods.parseXML(fileName);
         String name = doc.getElementsByTagName("name").item(0).getTextContent();
+        ArrayList<Planet> planets = new ArrayList<>();
+
         return new Galaxy();
     }
 

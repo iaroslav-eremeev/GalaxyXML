@@ -61,23 +61,15 @@ public class Planet {
     public void toXmlElement(Document doc){
         Element planet = doc.createElement("planet");
         doc.appendChild(planet);
-        Element name = doc.createElement("name");
-        planet.appendChild(name);
-        name.setTextContent(this.name);
-        Element type = doc.createElement("type");
-        planet.appendChild(type);
-        type.setTextContent(this.type);
+        planet.setAttribute("name", this.name);
+        planet.setAttribute("type", this.type);
     }
 
     public void toXmlElement(Document doc, Element parent){
         Element planet = doc.createElement("planet");
         parent.appendChild(planet);
-        Element name = doc.createElement("name");
-        planet.appendChild(name);
-        name.setTextContent(this.name);
-        Element type = doc.createElement("type");
-        planet.appendChild(type);
-        type.setTextContent(this.type);
+        planet.setAttribute("name", this.name);
+        planet.setAttribute("type", this.type);
     }
 
     @Override
