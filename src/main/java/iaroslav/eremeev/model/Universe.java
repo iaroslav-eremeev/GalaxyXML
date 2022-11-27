@@ -4,6 +4,7 @@ import iaroslav.eremeev.util.Generator;
 import iaroslav.eremeev.util.XMLmethods;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -62,8 +63,16 @@ public class Universe {
 
     public Universe fromXML(String fileName) throws ParserConfigurationException, IOException, SAXException {
         Document doc = XMLmethods.parseXML(fileName);
-        Element universe = (Element) doc.getElementsByTagName("universe").item(0);
-
+        Universe universe = new Universe();
+        Element universeXML = (Element) doc.getElementsByTagName("universe").item(0);
+        Element galaxies = (Element) universeXML.getElementsByTagName("galaxies").item(0);
+        NodeList galaxiesList = galaxies.getElementsByTagName("galaxy");
+        for (int i = 0; i < galaxiesList.getLength(); i++) {
+            Galaxy galaxy = new Galaxy();
+            galaxy = galaxy.fromXmlParent((Element) galaxiesList.item(i));
+            universe.addGalaxy(galaxy);
+        }
+        return universe;
     }
 
     public void toXML(String fileName) throws ParserConfigurationException {
