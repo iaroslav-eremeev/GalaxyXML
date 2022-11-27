@@ -86,6 +86,19 @@ public class Galaxy {
         return galaxy;
     }
 
+    public Galaxy fromXmlParent(Element parent){
+        String name = parent.getAttribute("name");
+        Galaxy galaxy = new Galaxy(name);
+        Element planets = (Element) parent.getElementsByTagName("planets").item(0);
+        NodeList planetsList = planets.getElementsByTagName("planet");
+        for (int i = 0; i < planetsList.getLength(); i++) {
+            Planet planet = new Planet();
+            planet = planet.fromXmlParent((Element) planetsList.item(i));
+            galaxy.addPlanet(planet);
+        }
+        return galaxy;
+    }
+
     public void toXML(String fileName) throws ParserConfigurationException {
         Document doc = XMLmethods.newDoc();
         toXmlElement(doc);

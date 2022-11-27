@@ -4,8 +4,10 @@ import iaroslav.eremeev.util.Generator;
 import iaroslav.eremeev.util.XMLmethods;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -56,16 +58,21 @@ public class Universe {
             } catch (InterruptedException e) {
             }
         }
+    }
+
+    public Universe fromXML(String fileName) throws ParserConfigurationException, IOException, SAXException {
+        Document doc = XMLmethods.parseXML(fileName);
+        Element universe = (Element) doc.getElementsByTagName("universe").item(0);
 
     }
 
     public void toXML(String fileName) throws ParserConfigurationException {
         Document doc = XMLmethods.newDoc();
-        toXMLElement(doc);
+        toXmlElement(doc);
         XMLmethods.writeToFile(doc, fileName);
     }
 
-    public void toXMLElement(Document doc){
+    public void toXmlElement(Document doc){
         Element universe = doc.createElement("universe");
         doc.appendChild(universe);
         Element galaxies = doc.createElement("galaxies");
