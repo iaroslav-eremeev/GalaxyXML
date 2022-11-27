@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<galaxy name="Far">
+    <planets>
+        <planet name="Tatuin" type="desert"/>
+        <planet name="Naboo" type="forest"/>
+        <planet name="Alderaan" type="oceanic"/>
+    </planets>
+</galaxy>

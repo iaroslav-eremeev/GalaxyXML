@@ -3,11 +3,14 @@ package iaroslav.eremeev.model;
 import iaroslav.eremeev.util.XMLmethods;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Galaxy {
@@ -70,10 +73,17 @@ public class Galaxy {
 
     public Galaxy fromXML(String fileName) throws ParserConfigurationException, IOException, SAXException {
         Document doc = XMLmethods.parseXML(fileName);
-        String name = doc.getElementsByTagName("name").item(0).getTextContent();
-        ArrayList<Planet> planets = new ArrayList<>();
-
-        return new Galaxy();
+        Element galaxyXML = (Element) doc.getElementsByTagName("galaxy").item(0);
+        String name = galaxyXML.getAttribute("name");
+        Galaxy galaxy = new Galaxy(name);
+        Element planets = (Element) galaxyXML.getElementsByTagName("planets").item(0);
+        NodeList planetsList = planets.getElementsByTagName("planet");
+        for (int i = 0; i < planetsList.getLength(); i++) {
+            Planet planet = new Planet();
+            planet = planet.fromXmlParent((Element) planetsList.item(i));
+            galaxy.addPlanet(planet);
+        }
+        return galaxy;
     }
 
     public void toXML(String fileName) throws ParserConfigurationException {

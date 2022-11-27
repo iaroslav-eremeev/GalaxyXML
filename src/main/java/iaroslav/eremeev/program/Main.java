@@ -34,7 +34,7 @@ public class Main {
 
         /*universe.toXML("TheOnlyUniverse");*/
 
-        planet1.toXML("planet1");
-        System.out.println(planet1.fromXML("planet1"));
+        galaxy1.toXML("galaxy1");
+        System.out.println(galaxy1.fromXML("galaxy1"));
     }
 }

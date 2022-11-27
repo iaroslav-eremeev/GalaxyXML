@@ -3,6 +3,8 @@ package iaroslav.eremeev.model;
 import iaroslav.eremeev.util.XMLmethods;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -48,11 +50,12 @@ public class Planet {
         return new Planet(name, type);
     }
 
-    public Planet fromXmlElement(Document doc){
-        String name = doc.getElementsByTagName("name").item(0).getTextContent();
-        String type = doc.getElementsByTagName("type").item(0).getTextContent();
+    public Planet fromXmlParent(Element parent){
+        String name = parent.getAttribute("name");
+        String type = parent.getAttribute("type");
         return new Planet(name, type);
     }
+
     public void toXML(String fileName) throws ParserConfigurationException {
         Document doc = XMLmethods.newDoc();
         toXmlElement(doc);
