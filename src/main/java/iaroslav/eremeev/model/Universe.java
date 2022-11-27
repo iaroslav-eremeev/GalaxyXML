@@ -5,7 +5,6 @@ import iaroslav.eremeev.util.XMLmethods;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import javax.print.Doc;
 import javax.xml.parsers.ParserConfigurationException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -71,7 +70,7 @@ public class Universe {
         doc.appendChild(universe);
         Element galaxies = doc.createElement("galaxies");
         universe.appendChild(galaxies);
-        for (Galaxy galaxy : this.galaxies) galaxy.toXMLElement(doc, galaxies);
+        for (Galaxy galaxy : this.galaxies) galaxy.toXmlElement(doc, galaxies);
     }
 
     @Override

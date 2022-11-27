@@ -5,10 +5,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
-import javax.print.Doc;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -50,12 +47,18 @@ public class Planet {
         String type = doc.getElementsByTagName("type").item(0).getTextContent();
         return new Planet(name, type);
     }
+
+    public Planet fromXmlElement(Document doc){
+        String name = doc.getElementsByTagName("name").item(0).getTextContent();
+        String type = doc.getElementsByTagName("type").item(0).getTextContent();
+        return new Planet(name, type);
+    }
     public void toXML(String fileName) throws ParserConfigurationException {
         Document doc = XMLmethods.newDoc();
-        toXMLElement(doc);
+        toXmlElement(doc);
         XMLmethods.writeToFile(doc, fileName);
     }
-    public void toXMLElement(Document doc){
+    public void toXmlElement(Document doc){
         Element planet = doc.createElement("planet");
         doc.appendChild(planet);
         Element name = doc.createElement("name");
@@ -66,7 +69,7 @@ public class Planet {
         type.setTextContent(this.type);
     }
 
-    public void toXMLElement(Document doc, Element parent){
+    public void toXmlElement(Document doc, Element parent){
         Element planet = doc.createElement("planet");
         parent.appendChild(planet);
         Element name = doc.createElement("name");

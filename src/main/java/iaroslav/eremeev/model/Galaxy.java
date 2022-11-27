@@ -3,12 +3,9 @@ package iaroslav.eremeev.model;
 import iaroslav.eremeev.util.XMLmethods;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -71,13 +68,19 @@ public class Galaxy {
         this.name = name;
     }
 
+    public Galaxy fromXML(String fileName) throws ParserConfigurationException, IOException, SAXException {
+        Document doc = XMLmethods.parseXML(fileName);
+        String name = doc.getElementsByTagName("name").item(0).getTextContent();
+        return new Galaxy();
+    }
+
     public void toXML(String fileName) throws ParserConfigurationException {
         Document doc = XMLmethods.newDoc();
-        toXMLElement(doc);
+        toXmlElement(doc);
         XMLmethods.writeToFile(doc, fileName);
     }
 
-    public void toXMLElement(Document doc){
+    public void toXmlElement(Document doc){
         Element galaxy = doc.createElement("galaxy");
         doc.appendChild(galaxy);
         Element name = doc.createElement("name");
@@ -85,9 +88,9 @@ public class Galaxy {
         name.setTextContent(this.name);
         Element planets = doc.createElement("planets");
         galaxy.appendChild(planets);
-        for (Planet planet : this.planets) planet.toXMLElement(doc, planets);
+        for (Planet planet : this.planets) planet.toXmlElement(doc, planets);
     }
-    public void toXMLElement(Document doc, Element parent){
+    public void toXmlElement(Document doc, Element parent){
         Element galaxy = doc.createElement("galaxy");
         parent.appendChild(galaxy);
         Element name = doc.createElement("name");
@@ -95,7 +98,7 @@ public class Galaxy {
         name.setTextContent(this.name);
         Element planets = doc.createElement("planets");
         galaxy.appendChild(planets);
-        for (Planet planet : this.planets) planet.toXMLElement(doc, planets);
+        for (Planet planet : this.planets) planet.toXmlElement(doc, planets);
     }
     @Override
     public boolean equals(Object o) {
