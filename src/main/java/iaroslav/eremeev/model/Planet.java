@@ -3,7 +3,9 @@ package iaroslav.eremeev.model;
 import iaroslav.eremeev.util.XMLmethods;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
 
+import javax.print.Doc;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.FileOutputStream;
@@ -40,6 +42,13 @@ public class Planet {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Planet fromXML(String fileName) throws ParserConfigurationException, IOException, SAXException {
+        Document doc = XMLmethods.parseXML(fileName);
+        String name = doc.getElementsByTagName("name").item(0).getTextContent();
+        String type = doc.getElementsByTagName("type").item(0).getTextContent();
+        return new Planet(name, type);
     }
     public void toXML(String fileName) throws ParserConfigurationException {
         Document doc = XMLmethods.newDoc();
