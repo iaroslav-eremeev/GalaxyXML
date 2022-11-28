@@ -50,5 +50,6 @@ public class Main {
 
         universe.toXML("universe");
         System.out.println(universe.fromXML("universe"));
+        universe.groupPlanetsInXmlFile("universe");
     }
 }

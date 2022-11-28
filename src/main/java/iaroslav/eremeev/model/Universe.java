@@ -95,8 +95,8 @@ public class Universe {
         Document doc = XmlMethods.parseXML(fileName);
         NodeList planetsAllGalaxies = doc.getElementsByTagName("planets");
         for (int i = 0; i < planetsAllGalaxies.getLength(); i++) {
-            Node planets = planetsAllGalaxies.item(i);
-            NodeList planetsList = planets.getChildNodes();
+            Element planets = (Element) planetsAllGalaxies.item(i);
+            NodeList planetsList = planets.getElementsByTagName("planet");
             HashMap<String, ArrayList<Element>> planetsHashMap = new HashMap<>();
             String planetName = "";
             for (int j = 0; j < planetsList.getLength(); j++) {

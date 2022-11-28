@@ -1,26 +1,74 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <universe>
+        
     <galaxies>
+                
         <galaxy name="Far far away">
+                        
             <planets>
-                <planet name="Tatooine" type="desert"/>
-                <planet name="Naboo" type="forest"/>
-                <planet name="Alderaan" type="forest"/>
-                <planet name="Utapau" type="desert"/>
-                <planet name="Coruscant" type="city"/>
-                <planet name="Yavin" type="gas"/>
-                <planet name="Yavin" type="forest"/>
+                                
+                
+                
+                
+                
+                
+                
+            
+                <EqualGroup name="Coruscant_group" number="1">
+                    <planet name="Coruscant" type="city"/>
+                </EqualGroup>
+                <EqualGroup name="Yavin_group" number="2">
+                    <planet name="Yavin" type="gas"/>
+                    <planet name="Yavin" type="forest"/>
+                </EqualGroup>
+                <EqualGroup name="Naboo_group" number="3">
+                    <planet name="Naboo" type="forest"/>
+                </EqualGroup>
+                <EqualGroup name="Tatooine_group" number="4">
+                    <planet name="Tatooine" type="desert"/>
+                </EqualGroup>
+                <EqualGroup name="Utapau_group" number="5">
+                    <planet name="Utapau" type="desert"/>
+                </EqualGroup>
+                <EqualGroup name="Alderaan_group" number="6">
+                    <planet name="Alderaan" type="forest"/>
+                </EqualGroup>
             </planets>
+                    
         </galaxy>
+                
         <galaxy name="Milky Way">
+                        
             <planets>
-                <planet name="Uranus" type="icy"/>
-                <planet name="Neptune" type="oceanic"/>
-                <planet name="Jupiter" type="gas"/>
-                <planet name="Saturn" type="gas"/>
-                <planet name="Mars" type="desert"/>
-                <planet name="Earth" type="forest"/>
+                                
+                
+                
+                
+                
+                
+            
+                <EqualGroup name="Earth_group" number="1">
+                    <planet name="Earth" type="forest"/>
+                </EqualGroup>
+                <EqualGroup name="Mars_group" number="2">
+                    <planet name="Mars" type="desert"/>
+                </EqualGroup>
+                <EqualGroup name="Neptune_group" number="3">
+                    <planet name="Neptune" type="oceanic"/>
+                </EqualGroup>
+                <EqualGroup name="Jupiter_group" number="4">
+                    <planet name="Jupiter" type="gas"/>
+                </EqualGroup>
+                <EqualGroup name="Saturn_group" number="5">
+                    <planet name="Saturn" type="gas"/>
+                </EqualGroup>
+                <EqualGroup name="Uranus_group" number="6">
+                    <planet name="Uranus" type="icy"/>
+                </EqualGroup>
             </planets>
+                    
         </galaxy>
+            
     </galaxies>
+    
 </universe>
