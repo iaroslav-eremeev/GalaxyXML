@@ -21,13 +21,13 @@ public class Generator {
     public static Planet generatePlanet() {
         Planet planet = new Planet();
         planet.setType(generateType());
-        planet.setName("P" + generateNumber(1000, 10000));
+        planet.setName("P" + generateNumber(10, 100));
         return planet;
     }
 
     public static Galaxy generateGalaxy() {
         Galaxy galaxy = new Galaxy();
-        galaxy.setName("G" + generateNumber(1000, 10000));
+        galaxy.setName("G" + generateNumber(10, 100));
         int numberOfPlanets = generateNumber(1, 21);
         for (int i = 0; i < numberOfPlanets; i++) {
             galaxy.addPlanet(generatePlanet());
