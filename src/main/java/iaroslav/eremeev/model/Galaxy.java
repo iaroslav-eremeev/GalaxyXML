@@ -1,16 +1,14 @@
 package iaroslav.eremeev.model;
 
-import iaroslav.eremeev.util.XMLmethods;
+import iaroslav.eremeev.util.XmlMethods;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 
 public class Galaxy {
@@ -72,7 +70,7 @@ public class Galaxy {
     }
 
     public Galaxy fromXML(String fileName) throws ParserConfigurationException, IOException, SAXException {
-        Document doc = XMLmethods.parseXML(fileName);
+        Document doc = XmlMethods.parseXML(fileName);
         Element galaxyXML = (Element) doc.getElementsByTagName("galaxy").item(0);
         String name = galaxyXML.getAttribute("name");
         Galaxy galaxy = new Galaxy(name);
@@ -100,9 +98,9 @@ public class Galaxy {
     }
 
     public void toXML(String fileName) throws ParserConfigurationException {
-        Document doc = XMLmethods.newDoc();
+        Document doc = XmlMethods.newDoc();
         toXmlElement(doc);
-        XMLmethods.writeToFile(doc, fileName);
+        XmlMethods.writeToFile(doc, fileName);
     }
 
     public void toXmlElement(Document doc){

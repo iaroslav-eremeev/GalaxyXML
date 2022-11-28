@@ -1,7 +1,7 @@
 package iaroslav.eremeev.model;
 
 import iaroslav.eremeev.util.Generator;
-import iaroslav.eremeev.util.XMLmethods;
+import iaroslav.eremeev.util.XmlMethods;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -62,7 +62,7 @@ public class Universe {
     }
 
     public Universe fromXML(String fileName) throws ParserConfigurationException, IOException, SAXException {
-        Document doc = XMLmethods.parseXML(fileName);
+        Document doc = XmlMethods.parseXML(fileName);
         Universe universe = new Universe();
         Element universeXML = (Element) doc.getElementsByTagName("universe").item(0);
         Element galaxies = (Element) universeXML.getElementsByTagName("galaxies").item(0);
@@ -76,9 +76,9 @@ public class Universe {
     }
 
     public void toXML(String fileName) throws ParserConfigurationException {
-        Document doc = XMLmethods.newDoc();
+        Document doc = XmlMethods.newDoc();
         toXmlElement(doc);
-        XMLmethods.writeToFile(doc, fileName);
+        XmlMethods.writeToFile(doc, fileName);
     }
 
     public void toXmlElement(Document doc){
@@ -87,6 +87,10 @@ public class Universe {
         Element galaxies = doc.createElement("galaxies");
         universe.appendChild(galaxies);
         for (Galaxy galaxy : this.galaxies) galaxy.toXmlElement(doc, galaxies);
+    }
+
+    public void groupPlanets(){
+
     }
 
     @Override

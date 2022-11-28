@@ -14,7 +14,7 @@ public class Main {
         /*Universe universe = new Universe();
         universe.behavior();*/
 
-        Planet tatooine = new Planet("Tatooine", "desert");
+        /*Planet tatooine = new Planet("Tatooine", "desert");
         Planet naboo = new Planet("Naboo", "forest");
         Planet alderaan = new Planet("Alderaan", "forest");
         Planet utapau = new Planet("Utapau", "desert");
@@ -47,6 +47,6 @@ public class Main {
         universe.addGalaxy(galaxy2);
 
         universe.toXML("universe");
-        System.out.println(universe.fromXML("universe"));
+        System.out.println(universe.fromXML("universe"));*/
     }
 }

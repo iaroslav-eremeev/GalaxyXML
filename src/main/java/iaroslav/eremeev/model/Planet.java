@@ -1,10 +1,8 @@
 package iaroslav.eremeev.model;
 
-import iaroslav.eremeev.util.XMLmethods;
+import iaroslav.eremeev.util.XmlMethods;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -44,7 +42,7 @@ public class Planet {
     }
 
     public Planet fromXML(String fileName) throws ParserConfigurationException, IOException, SAXException {
-        Document doc = XMLmethods.parseXML(fileName);
+        Document doc = XmlMethods.parseXML(fileName);
         String name = doc.getDocumentElement().getAttribute("name");
         String type = doc.getDocumentElement().getAttribute("type");
         return new Planet(name, type);
@@ -57,9 +55,9 @@ public class Planet {
     }
 
     public void toXML(String fileName) throws ParserConfigurationException {
-        Document doc = XMLmethods.newDoc();
+        Document doc = XmlMethods.newDoc();
         toXmlElement(doc);
-        XMLmethods.writeToFile(doc, fileName);
+        XmlMethods.writeToFile(doc, fileName);
     }
     public void toXmlElement(Document doc){
         Element planet = doc.createElement("planet");

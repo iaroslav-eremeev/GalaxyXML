@@ -17,7 +17,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class XMLmethods {
+public class XmlMethods {
 
     public static Document parseXML(String fileName) throws ParserConfigurationException, IOException, SAXException {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -32,7 +32,7 @@ public class XMLmethods {
     public static void writeToFile(Document doc, String fileName) {
         try (FileOutputStream output =
                      new FileOutputStream(fileName)) {
-            XMLmethods.writeXML(doc, output);
+            XmlMethods.writeXML(doc, output);
         } catch (IOException | TransformerException e) {
             e.printStackTrace();
         }
