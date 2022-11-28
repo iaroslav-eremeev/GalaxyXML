@@ -1,25 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<universe>
-        
+<?xml version="1.0" encoding="UTF-8"?><universe>
     <galaxies>
-                
         <galaxy name="Far far away">
-                        
             <planets>
-                                
-                
-                
-                
-                
-                
-                
-            
                 <EqualGroup name="Coruscant_group" number="1">
                     <planet name="Coruscant" type="city"/>
                 </EqualGroup>
                 <EqualGroup name="Yavin_group" number="2">
                     <planet name="Yavin" type="gas"/>
                     <planet name="Yavin" type="forest"/>
+                    <planet name="Yavin" type="desert"/>
                 </EqualGroup>
                 <EqualGroup name="Naboo_group" number="3">
                     <planet name="Naboo" type="forest"/>
@@ -34,19 +23,9 @@
                     <planet name="Alderaan" type="forest"/>
                 </EqualGroup>
             </planets>
-                    
         </galaxy>
-                
         <galaxy name="Milky Way">
-                        
             <planets>
-                                
-                
-                
-                
-                
-                
-            
                 <EqualGroup name="Earth_group" number="1">
                     <planet name="Earth" type="forest"/>
                 </EqualGroup>
@@ -66,9 +45,6 @@
                     <planet name="Uranus" type="icy"/>
                 </EqualGroup>
             </planets>
-                    
         </galaxy>
-            
     </galaxies>
-    
 </universe>

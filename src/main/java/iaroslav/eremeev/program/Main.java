@@ -21,6 +21,7 @@ public class Main {
         Planet coruscant = new Planet("Coruscant", "city");
         Planet yavin = new Planet("Yavin", "gas");
         Planet yavin4 = new Planet("Yavin", "forest");
+        Planet yavin8 = new Planet("Yavin", "desert");
         Galaxy galaxy1 = new Galaxy("Far far away");
         galaxy1.addPlanet(tatooine);
         galaxy1.addPlanet(naboo);
@@ -29,6 +30,7 @@ public class Main {
         galaxy1.addPlanet(coruscant);
         galaxy1.addPlanet(yavin);
         galaxy1.addPlanet(yavin4);
+        galaxy1.addPlanet(yavin8);
 
         Planet uranus = new Planet("Uranus", "icy");
         Planet neptune = new Planet("Neptune", "oceanic");
