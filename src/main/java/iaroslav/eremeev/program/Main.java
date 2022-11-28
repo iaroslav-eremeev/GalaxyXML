@@ -14,12 +14,13 @@ public class Main {
         /*Universe universe = new Universe();
         universe.behavior();*/
 
-        /*Planet tatooine = new Planet("Tatooine", "desert");
+        Planet tatooine = new Planet("Tatooine", "desert");
         Planet naboo = new Planet("Naboo", "forest");
         Planet alderaan = new Planet("Alderaan", "forest");
         Planet utapau = new Planet("Utapau", "desert");
         Planet coruscant = new Planet("Coruscant", "city");
         Planet yavin = new Planet("Yavin", "gas");
+        Planet yavin4 = new Planet("Yavin", "forest");
         Galaxy galaxy1 = new Galaxy("Far far away");
         galaxy1.addPlanet(tatooine);
         galaxy1.addPlanet(naboo);
@@ -27,6 +28,7 @@ public class Main {
         galaxy1.addPlanet(utapau);
         galaxy1.addPlanet(coruscant);
         galaxy1.addPlanet(yavin);
+        galaxy1.addPlanet(yavin4);
 
         Planet uranus = new Planet("Uranus", "icy");
         Planet neptune = new Planet("Neptune", "oceanic");
@@ -47,6 +49,6 @@ public class Main {
         universe.addGalaxy(galaxy2);
 
         universe.toXML("universe");
-        System.out.println(universe.fromXML("universe"));*/
+        System.out.println(universe.fromXML("universe"));
     }
 }

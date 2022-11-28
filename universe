@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<universe>
+    <galaxies>
+        <galaxy name="Far far away">
+            <planets>
+                <planet name="Tatooine" type="desert"/>
+                <planet name="Naboo" type="forest"/>
+                <planet name="Alderaan" type="forest"/>
+                <planet name="Utapau" type="desert"/>
+                <planet name="Coruscant" type="city"/>
+                <planet name="Yavin" type="gas"/>
+                <planet name="Yavin" type="forest"/>
+            </planets>
+        </galaxy>
+        <galaxy name="Milky Way">
+            <planets>
+                <planet name="Uranus" type="icy"/>
+                <planet name="Neptune" type="oceanic"/>
+                <planet name="Jupiter" type="gas"/>
+                <planet name="Saturn" type="gas"/>
+                <planet name="Mars" type="desert"/>
+                <planet name="Earth" type="forest"/>
+            </planets>
+        </galaxy>
+    </galaxies>
+</universe>

@@ -4,12 +4,14 @@ import iaroslav.eremeev.util.Generator;
 import iaroslav.eremeev.util.XmlMethods;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Universe {
@@ -89,8 +91,33 @@ public class Universe {
         for (Galaxy galaxy : this.galaxies) galaxy.toXmlElement(doc, galaxies);
     }
 
-    public void groupPlanets(){
-
+    public void groupPlanetsInXmlFile(String fileName) throws ParserConfigurationException, IOException, SAXException {
+        Document doc = XmlMethods.parseXML(fileName);
+        NodeList planetsAllGalaxies = doc.getElementsByTagName("planets");
+        for (int i = 0; i < planetsAllGalaxies.getLength(); i++) {
+            Node planets = planetsAllGalaxies.item(i);
+            NodeList planetsList = planets.getChildNodes();
+            HashMap<String, ArrayList<Element>> planetsHashMap = new HashMap<>();
+            String planetName = "";
+            for (int j = 0; j < planetsList.getLength(); j++) {
+                Element planet = (Element) planetsList.item(j);
+                planetName = planet.getAttribute("name");
+                planetsHashMap.computeIfAbsent(planetName, p -> new ArrayList<>()).add(planet);
+            }
+            int groupNumber = 1;
+            for (var entry : planetsHashMap.entrySet()) {
+                Element equalGroup = doc.createElement("EqualGroup");
+                String groupName = entry.getKey();
+                equalGroup.setAttribute("number", String.valueOf(groupNumber));
+                groupNumber++;
+                equalGroup.setAttribute("name", groupName + "_group");
+                planets.appendChild(equalGroup);
+                for (int j = 0; j < entry.getValue().size(); j++) {
+                    equalGroup.appendChild(entry.getValue().get(j));
+                }
+            }
+        }
+        XmlMethods.writeToFile(doc, fileName);
     }
 
     @Override
