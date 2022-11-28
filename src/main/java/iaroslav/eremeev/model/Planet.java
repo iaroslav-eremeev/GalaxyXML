@@ -57,7 +57,7 @@ public class Planet {
     public void toXML(String fileName) throws ParserConfigurationException {
         Document doc = XmlMethods.newDoc();
         toXmlElement(doc);
-        XmlMethods.writeToFile(doc, fileName);
+        XmlMethods.writeToXml(doc, fileName);
     }
     public void toXmlElement(Document doc){
         Element planet = doc.createElement("planet");

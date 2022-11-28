@@ -4,7 +4,6 @@ import iaroslav.eremeev.util.Generator;
 import iaroslav.eremeev.util.XmlMethods;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -80,7 +79,7 @@ public class Universe {
     public void toXML(String fileName) throws ParserConfigurationException {
         Document doc = XmlMethods.newDoc();
         toXmlElement(doc);
-        XmlMethods.writeToFile(doc, fileName);
+        XmlMethods.writeToXml(doc, fileName);
     }
 
     public void toXmlElement(Document doc){
@@ -117,7 +116,7 @@ public class Universe {
                 }
             }
         }
-        XmlMethods.writeToFile(doc, fileName);
+        XmlMethods.writeToXml(doc, fileName);
     }
 
     @Override
