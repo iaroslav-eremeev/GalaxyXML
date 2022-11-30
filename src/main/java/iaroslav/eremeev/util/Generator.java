@@ -54,11 +54,16 @@ public class Generator {
         return galaxy;
     }
 
-
+    /**
+     * Method for generating ArrayList of Galaxies. Number of planets in each Galaxy
+     * is defined using generateNumber() - random number of planets between 1 and 20
+     * @param numberOfGalaxies - number of galaxies in the ArrayList
+     * @return ArrayList of Galaxy objects
+     */
     public static ArrayList<Galaxy> generateGalaxies(int numberOfGalaxies){
         ArrayList<Galaxy> galaxies = new ArrayList<>();
         for (int i = 0; i < numberOfGalaxies; i++) {
-            galaxies.add(generateGalaxy(generateNumber(1, 20));
+            galaxies.add(generateGalaxy(generateNumber(1, 20)));
         }
         return galaxies;
     }
