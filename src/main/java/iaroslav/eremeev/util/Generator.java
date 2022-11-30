@@ -5,6 +5,7 @@ import iaroslav.eremeev.model.Planet;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Generator {
 
@@ -16,7 +17,7 @@ public class Generator {
      */
     public static int generateNumber(int a, int b){
         Random random = new Random();
-        return random.nextInt(b) + a;
+        return ThreadLocalRandom.current().nextInt(a, b + 1);
     }
 
     /**
