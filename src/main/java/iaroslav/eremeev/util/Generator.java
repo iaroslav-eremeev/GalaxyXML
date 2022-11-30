@@ -16,7 +16,6 @@ public class Generator {
      * @return int number
      */
     public static int generateNumber(int a, int b){
-        Random random = new Random();
         return ThreadLocalRandom.current().nextInt(a, b + 1);
     }
 
@@ -37,30 +36,29 @@ public class Generator {
     public static Planet generatePlanet() {
         Planet planet = new Planet();
         planet.setType(generateType());
-        planet.setName("P" + generateNumber(10, 90));
+        planet.setName("P" + generateNumber(10, 99));
         return planet;
     }
 
     /**
      * Method for generating a Galaxy object with name G**, where ** is a 2-digit int
-     * Galaxy object has from 1 to 20 planets
+     * @param numberOfPlanets - number of planets in galaxy
      * @return Galaxy object
      */
-    public static Galaxy generateGalaxy() {
+    public static Galaxy generateGalaxy(int numberOfPlanets) {
         Galaxy galaxy = new Galaxy();
-        galaxy.setName("G" + generateNumber(10, 90));
-        int numberOfPlanets = generateNumber(1, 20);
+        galaxy.setName("G" + generateNumber(10, 99));
         for (int i = 0; i < numberOfPlanets; i++) {
             galaxy.addPlanet(generatePlanet());
         }
         return galaxy;
     }
 
-    public static ArrayList<Galaxy> generateGalaxies(){
+
+    public static ArrayList<Galaxy> generateGalaxies(int numberOfGalaxies){
         ArrayList<Galaxy> galaxies = new ArrayList<>();
-        int numberOfGalaxies = generateNumber(1, 10);
         for (int i = 0; i < numberOfGalaxies; i++) {
-            galaxies.add(generateGalaxy());
+            galaxies.add(generateGalaxy(generateNumber(1, 20));
         }
         return galaxies;
     }

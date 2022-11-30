@@ -52,7 +52,8 @@ public class Universe {
 
     public void behavior() {
         while (true) {
-            ArrayList<Galaxy> galaxies = Generator.generateGalaxies();
+            ArrayList<Galaxy> galaxies = Generator
+                    .generateGalaxies(Generator.generateNumber(1, 10));
             this.galaxies.addAll(galaxies);
             System.out.println(this);
             try {
